@@ -3,3 +3,9 @@
 ^LICENSE\.md$
 ^NAMESPACE\.backup$
 ^README\.Rmd$
+^doc$
+^Meta$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
+^\.github$

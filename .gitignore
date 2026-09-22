@@ -3,3 +3,7 @@
 .RData
 .Ruserdata
 NAMESPACE.backup
+inst/doc
+/doc/
+/Meta/
+docs
