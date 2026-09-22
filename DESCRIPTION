@@ -1,0 +1,27 @@
+Package: OHLviz
+Type: Package
+Title: Visualize Ontario Hockey League Data
+Version: 0.1.0
+Authors@R: c(
+    person(
+      "Noah", "Cornish",
+      email = "noahcornish7@gmail.com",
+      role = c("aut", "cre", "cph")
+    )
+  )
+Description: Create consistent, publication-quality visualizations of
+    Ontario Hockey League data using 'ggplot2'. Provides chart themes
+    and plotting functions for player scoring, team scoring, and
+    goaltender performance. Functions accept data frames, allowing
+    data retrieval and analysis to remain separate from visualization.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Imports:
+    ggplot2,
+    rlang,
+    scales
+Roxygen: list(markdown = TRUE)
+Config/roxygen2/version: 8.1.0
+Suggests:
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
