@@ -38,27 +38,115 @@
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.1.0" id="ohlviz-010">OHLviz 0.1.0<a class="anchor" aria-label="anchor" href="#ohlviz-010"></a></h2>
-<p>Initial release.</p>
 <div class="section level3">
-<h3 id="visualizations-0-1-0">Visualizations<a class="anchor" aria-label="anchor" href="#visualizations-0-1-0"></a></h3>
-<ul><li>Added <code><a href="../reference/plot_scoring_leaders.html">plot_scoring_leaders()</a></code> for player scoring leaderboards, with configurable statistics, player limits, and column names.</li>
-<li>Added <code><a href="../reference/plot_team_scoring.html">plot_team_scoring()</a></code> for stacked goals-and-assists charts within a selected team.</li>
-<li>Added <code><a href="../reference/plot_goalie_leaders.html">plot_goalie_leaders()</a></code> for save percentage, goals-against average, and wins, with metric-specific ranking and formatting.</li>
-<li>Added <code><a href="../reference/theme_ohl.html">theme_ohl()</a></code> for consistent chart styling.</li>
+<h3 id="initial-release-0-1-0">Initial release<a class="anchor" aria-label="anchor" href="#initial-release-0-1-0"></a></h3>
+<p>OHLviz 0.1.0 is the first public release of the package.</p>
+<p>OHLviz provides consistent, customizable, publication-quality visualizations for Ontario Hockey League data using <code>ggplot2</code>. It is designed to complement <code>OHLpkg</code>, while remaining compatible with other data frames through configurable column mappings.</p>
+<div class="section level4">
+<h4 id="visualizations-0-1-0">Visualizations<a class="anchor" aria-label="anchor" href="#visualizations-0-1-0"></a></h4>
+<ul><li>
+<p>Added <code><a href="../reference/plot_scoring_leaders.html">plot_scoring_leaders()</a></code> for creating ranked player scoring leaderboards.</p>
+<ul><li>Supports configurable statistics.</li>
+<li>Supports configurable leaderboard sizes with <code>n</code>.</li>
+<li>Supports custom player, team, and statistic column names.</li>
+<li>Supports optional team labels.</li>
+<li>Handles non-finite values with validation and warnings.</li>
+<li>Returns a standard <code>ggplot</code> object.</li>
+</ul></li>
+<li>
+<p>Added <code><a href="../reference/plot_team_scoring.html">plot_team_scoring()</a></code> for visualizing player scoring within a selected team.</p>
+<ul><li>Displays goals and assists as stacked bars.</li>
+<li>Displays combined scoring totals.</li>
+<li>Supports configurable player limits.</li>
+<li>Supports custom column names.</li>
+<li>Supports custom goals and assists colours.</li>
+<li>Allows the team argument to be omitted when the supplied data contains exactly one team.</li>
+</ul></li>
+<li>
+<p>Added <code><a href="../reference/plot_goalie_leaders.html">plot_goalie_leaders()</a></code> for ranked goaltender comparisons.</p>
+<ul><li>Supports save percentage (<code>SAV%</code>).</li>
+<li>Supports goals-against average (<code>GAA</code>).</li>
+<li>Supports wins (<code>W</code>).</li>
+<li>Applies statistic-specific ranking direction.</li>
+<li>Applies statistic-specific value formatting.</li>
+<li>Supports both proportion and percentage save-percentage inputs.</li>
+<li>Supports custom column names.</li>
+<li>Returns a standard <code>ggplot</code> object.</li>
+</ul></li>
 </ul></div>
-<div class="section level3">
-<h3 id="customization-0-1-0">Customization<a class="anchor" aria-label="anchor" href="#customization-0-1-0"></a></h3>
-<ul><li>Plotting functions accept data frames and return ggplot objects.</li>
-<li>Default column names support OHLpkg output.</li>
-<li>Charts support custom titles, subtitles, captions, and colours.</li>
-<li>Goalie save percentages support explicitly specified proportion or percentage inputs.</li>
+<div class="section level4">
+<h4 id="themes-0-1-0">Themes<a class="anchor" aria-label="anchor" href="#themes-0-1-0"></a></h4>
+<ul><li>Added <code><a href="../reference/theme_ohl.html">theme_ohl()</a></code> as the shared visual theme for OHLviz.</li>
+<li>The theme can be used independently with custom <code>ggplot2</code> visualizations.</li>
+<li>Added support for configurable base text size and font family.</li>
 </ul></div>
-<div class="section level3">
-<h3 id="documentation-and-testing-0-1-0">Documentation and testing<a class="anchor" aria-label="anchor" href="#documentation-and-testing-0-1-0"></a></h3>
-<ul><li>Added function documentation and runnable offline examples.</li>
-<li>Added a README with a chart gallery and OHLpkg workflow examples.</li>
-<li>Added automated tests for ranking, filtering, formatting, input validation, and preservation of supplied data.</li>
+<div class="section level4">
+<h4 id="ohlpkg-integration-0-1-0">OHLpkg integration<a class="anchor" aria-label="anchor" href="#ohlpkg-integration-0-1-0"></a></h4>
+<ul><li><p>Default column names are designed to work directly with common <code>OHLpkg</code> outputs.</p></li>
+<li>
+<p>Added documentation demonstrating workflows using:</p>
+<ul><li><code>OHLpkg::get_Stats()</code></li>
+<li><code>OHLpkg::get_GoalieStats()</code></li>
+</ul></li>
+<li><p>OHLviz intentionally keeps data retrieval separate from visualization.</p></li>
+<li><p>Plotting functions accept ordinary data frames and do not require OHLpkg.</p></li>
 </ul></div>
+<div class="section level4">
+<h4 id="customization-0-1-0">Customization<a class="anchor" aria-label="anchor" href="#customization-0-1-0"></a></h4>
+<ul><li>Added custom chart titles.</li>
+<li>Added custom subtitles.</li>
+<li>Added custom captions.</li>
+<li>Added configurable chart colours.</li>
+<li>Added configurable column mappings.</li>
+<li>All plotting functions return <code>ggplot</code> objects so users can add additional <code>ggplot2</code> layers and theme modifications.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="validation-0-1-0">Validation<a class="anchor" aria-label="anchor" href="#validation-0-1-0"></a></h4>
+<ul><li>Added validation for required columns.</li>
+<li>Added validation for numeric statistic columns.</li>
+<li>Added validation for supported goalie statistics.</li>
+<li>Added handling of missing and non-finite statistic values.</li>
+<li>Added validation of supplied teams and plotting parameters.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="documentation-0-1-0">Documentation<a class="anchor" aria-label="anchor" href="#documentation-0-1-0"></a></h4>
+<ul><li>Added package README.</li>
+<li>Added installation instructions.</li>
+<li>Added quick-start examples.</li>
+<li>Added scoring leaderboard examples.</li>
+<li>Added team scoring examples.</li>
+<li>Added goaltender leaderboard examples.</li>
+<li>Added OHLpkg workflow examples.</li>
+<li>Added custom-column examples.</li>
+<li>Added chart customization examples.</li>
+<li>Added chart export examples.</li>
+<li>Added a getting-started vignette.</li>
+<li>Added pkgdown configuration and package website support.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="testing-0-1-0">Testing<a class="anchor" aria-label="anchor" href="#testing-0-1-0"></a></h4>
+<ul><li><p>Added automated tests using <code>testthat</code>.</p></li>
+<li>
+<p>Added tests covering:</p>
+<ul><li>ranking behaviour</li>
+<li>team filtering</li>
+<li>goalie ranking direction</li>
+<li>statistic formatting</li>
+<li>input validation</li>
+<li>missing values</li>
+<li>preservation of supplied data</li>
+</ul></li>
+</ul></div>
+<div class="section level4">
+<h4 id="package-infrastructure-0-1-0">Package infrastructure<a class="anchor" aria-label="anchor" href="#package-infrastructure-0-1-0"></a></h4>
+<ul><li>Established the initial OHLviz package structure.</li>
+<li>Added package metadata and MIT licensing.</li>
+<li>Added GitHub repository and issue-tracking links.</li>
+<li>Added roxygen2-generated documentation.</li>
+<li>Added pkgdown website configuration.</li>
+<li>Added development infrastructure for future OHL visualization functionality.</li>
+</ul></div>
+</div>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside></div>
